@@ -28,12 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            btnCalcular = new Button();
+            txtOrigen = new TextBox();
+            txtDestino = new TextBox();
+            lbResultado = new Label();
+            lbTarifas = new Label();
+            lbRutasOptimas = new Label();
+            SuspendLayout();
+            // 
+            // btnCalcular
+            // 
+            btnCalcular.Location = new Point(311, 206);
+            btnCalcular.Name = "btnCalcular";
+            btnCalcular.Size = new Size(94, 29);
+            btnCalcular.TabIndex = 0;
+            btnCalcular.Text = "button1";
+            btnCalcular.UseVisualStyleBackColor = true;
+            btnCalcular.Click += btnCalcular_Click;
+            // 
+            // txtOrigen
+            // 
+            txtOrigen.Location = new Point(144, 15);
+            txtOrigen.Name = "txtOrigen";
+            txtOrigen.Size = new Size(125, 27);
+            txtOrigen.TabIndex = 1;
+            // 
+            // txtDestino
+            // 
+            txtDestino.Location = new Point(144, 72);
+            txtDestino.Name = "txtDestino";
+            txtDestino.Size = new Size(125, 27);
+            txtDestino.TabIndex = 2;
+            // 
+            // lbResultado
+            // 
+            lbResultado.AutoSize = true;
+            lbResultado.Location = new Point(179, 149);
+            lbResultado.Name = "lbResultado";
+            lbResultado.Size = new Size(50, 20);
+            lbResultado.TabIndex = 3;
+            lbResultado.Text = "label1";
+            // 
+            // lbTarifas
+            // 
+            lbTarifas.AutoSize = true;
+            lbTarifas.Location = new Point(39, 215);
+            lbTarifas.Name = "lbTarifas";
+            lbTarifas.Size = new Size(51, 20);
+            lbTarifas.TabIndex = 4;
+            lbTarifas.Text = "Tarifas";
+            // 
+            // lbRutasOptimas
+            // 
+            lbRutasOptimas.AutoSize = true;
+            lbRutasOptimas.Location = new Point(510, 209);
+            lbRutasOptimas.Name = "lbRutasOptimas";
+            lbRutasOptimas.Size = new Size(50, 20);
+            lbRutasOptimas.TabIndex = 5;
+            lbRutasOptimas.Text = "label1";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(lbRutasOptimas);
+            Controls.Add(lbTarifas);
+            Controls.Add(lbResultado);
+            Controls.Add(txtDestino);
+            Controls.Add(txtOrigen);
+            Controls.Add(btnCalcular);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Button btnCalcular;
+        private TextBox txtOrigen;
+        private TextBox txtDestino;
+        private Label lbResultado;
+        private Label lbTarifas;
+        private Label lbRutasOptimas;
     }
 }
