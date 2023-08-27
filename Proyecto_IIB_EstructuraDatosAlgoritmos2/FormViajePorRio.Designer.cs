@@ -40,12 +40,15 @@
             dGVTarifas = new DataGridView();
             Iniciar = new Button();
             PanelRio = new Panel();
+            PBBote4 = new PictureBox();
+            PBBote3 = new PictureBox();
+            PBBote2 = new PictureBox();
+            PBBote1 = new PictureBox();
             lbE2 = new Label();
             lbE3 = new Label();
             lbE4 = new Label();
             lbE5 = new Label();
             lbE1 = new Label();
-            PBBote = new PictureBox();
             PBE5 = new PictureBox();
             PBE4 = new PictureBox();
             PBE2 = new PictureBox();
@@ -53,7 +56,10 @@
             PBE1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dGVTarifas).BeginInit();
             PanelRio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PBBote).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PBBote4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PBBote3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PBBote2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PBBote1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBE5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBE4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBE2).BeginInit();
@@ -67,6 +73,7 @@
             txtOrigen.Name = "txtOrigen";
             txtOrigen.Size = new Size(43, 27);
             txtOrigen.TabIndex = 1;
+            txtOrigen.TextChanged += txtOrigen_TextChanged;
             // 
             // txtDestino
             // 
@@ -74,6 +81,7 @@
             txtDestino.Name = "txtDestino";
             txtDestino.Size = new Size(43, 27);
             txtDestino.TabIndex = 2;
+            txtDestino.TextChanged += txtDestino_TextChanged;
             // 
             // lbResultado
             // 
@@ -163,14 +171,18 @@
             // 
             // PanelRio
             // 
+            PanelRio.BackColor = Color.Transparent;
             PanelRio.BackgroundImage = (Image)resources.GetObject("PanelRio.BackgroundImage");
             PanelRio.BackgroundImageLayout = ImageLayout.Stretch;
+            PanelRio.Controls.Add(PBBote4);
+            PanelRio.Controls.Add(PBBote3);
+            PanelRio.Controls.Add(PBBote2);
+            PanelRio.Controls.Add(PBBote1);
             PanelRio.Controls.Add(lbE2);
             PanelRio.Controls.Add(lbE3);
             PanelRio.Controls.Add(lbE4);
             PanelRio.Controls.Add(lbE5);
             PanelRio.Controls.Add(lbE1);
-            PanelRio.Controls.Add(PBBote);
             PanelRio.Controls.Add(PBE5);
             PanelRio.Controls.Add(PBE4);
             PanelRio.Controls.Add(PBE2);
@@ -180,6 +192,51 @@
             PanelRio.Name = "PanelRio";
             PanelRio.Size = new Size(833, 323);
             PanelRio.TabIndex = 11;
+            // 
+            // PBBote4
+            // 
+            PBBote4.BackColor = Color.Transparent;
+            PBBote4.Image = (Image)resources.GetObject("PBBote4.Image");
+            PBBote4.Location = new Point(565, 173);
+            PBBote4.Name = "PBBote4";
+            PBBote4.Size = new Size(75, 45);
+            PBBote4.SizeMode = PictureBoxSizeMode.StretchImage;
+            PBBote4.TabIndex = 25;
+            PBBote4.TabStop = false;
+            // 
+            // PBBote3
+            // 
+            PBBote3.BackColor = Color.Transparent;
+            PBBote3.Image = (Image)resources.GetObject("PBBote3.Image");
+            PBBote3.Location = new Point(415, 173);
+            PBBote3.Name = "PBBote3";
+            PBBote3.Size = new Size(75, 45);
+            PBBote3.SizeMode = PictureBoxSizeMode.StretchImage;
+            PBBote3.TabIndex = 24;
+            PBBote3.TabStop = false;
+            // 
+            // PBBote2
+            // 
+            PBBote2.BackColor = Color.Transparent;
+            PBBote2.Image = (Image)resources.GetObject("PBBote2.Image");
+            PBBote2.Location = new Point(265, 173);
+            PBBote2.Name = "PBBote2";
+            PBBote2.Size = new Size(75, 45);
+            PBBote2.SizeMode = PictureBoxSizeMode.StretchImage;
+            PBBote2.TabIndex = 23;
+            PBBote2.TabStop = false;
+            // 
+            // PBBote1
+            // 
+            PBBote1.BackColor = Color.Transparent;
+            PBBote1.BackgroundImage = (Image)resources.GetObject("PBBote1.BackgroundImage");
+            PBBote1.Image = (Image)resources.GetObject("PBBote1.Image");
+            PBBote1.Location = new Point(115, 173);
+            PBBote1.Name = "PBBote1";
+            PBBote1.Size = new Size(75, 45);
+            PBBote1.SizeMode = PictureBoxSizeMode.StretchImage;
+            PBBote1.TabIndex = 17;
+            PBBote1.TabStop = false;
             // 
             // lbE2
             // 
@@ -236,17 +293,6 @@
             lbE1.TabIndex = 18;
             lbE1.Text = "1";
             // 
-            // PBBote
-            // 
-            PBBote.BackColor = Color.Transparent;
-            PBBote.Image = (Image)resources.GetObject("PBBote.Image");
-            PBBote.Location = new Point(0, 154);
-            PBBote.Name = "PBBote";
-            PBBote.Size = new Size(64, 46);
-            PBBote.SizeMode = PictureBoxSizeMode.StretchImage;
-            PBBote.TabIndex = 17;
-            PBBote.TabStop = false;
-            // 
             // PBE5
             // 
             PBE5.Image = (Image)resources.GetObject("PBE5.Image");
@@ -269,6 +315,7 @@
             // 
             // PBE2
             // 
+            PBE2.BackColor = Color.Transparent;
             PBE2.Image = (Image)resources.GetObject("PBE2.Image");
             PBE2.Location = new Point(250, 123);
             PBE2.Name = "PBE2";
@@ -289,7 +336,9 @@
             // 
             // PBE1
             // 
-            PBE1.Image = (Image)resources.GetObject("PBE1.Image");
+            PBE1.BackColor = Color.Transparent;
+            PBE1.BackgroundImage = (Image)resources.GetObject("PBE1.BackgroundImage");
+            PBE1.BackgroundImageLayout = ImageLayout.Stretch;
             PBE1.Location = new Point(100, 123);
             PBE1.Name = "PBE1";
             PBE1.Size = new Size(103, 66);
@@ -317,7 +366,10 @@
             ((System.ComponentModel.ISupportInitialize)dGVTarifas).EndInit();
             PanelRio.ResumeLayout(false);
             PanelRio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PBBote).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PBBote4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PBBote3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PBBote2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PBBote1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBE5).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBE4).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBE2).EndInit();
@@ -342,11 +394,14 @@
         private PictureBox PBE4;
         private PictureBox PBE2;
         private PictureBox PBE3;
-        private PictureBox PBBote;
+        private PictureBox PBBote1;
         private Label lbE1;
         private Label lbE2;
         private Label lbE3;
         private Label lbE4;
         private Label lbE5;
+        private PictureBox PBBote4;
+        private PictureBox PBBote3;
+        private PictureBox PBBote2;
     }
 }

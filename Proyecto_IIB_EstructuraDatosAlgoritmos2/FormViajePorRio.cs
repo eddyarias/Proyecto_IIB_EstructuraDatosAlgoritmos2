@@ -1,5 +1,6 @@
 namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 {
+    using System;
     using System.Windows.Forms;
 
     public partial class FormViajePorRio : Form
@@ -8,19 +9,26 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
         private Timer timer;
         private int[] embarcaderos; // Posiciones de los embarcaderos
         List<int> rutaOptima;
+        List<Bote> botes = new List<Bote>();
 
         //para navegar
-        private const int FRAMES_PER_SECOND = 60; // fps
+        private const int FRAMES_PER_SECOND = 30; // fps
         private int currentFrame = 0;
         private int totalFrames = 0;
+
         public FormViajePorRio()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
 
-
             viaje = new ViajePorRio();
-            embarcaderos = new int[] { 120, 270, 420, 570, 720 }; // Ubicaciones en píxeles
+            embarcaderos = new int[] { 115, 265, 415, 565, 715 }; // Ubicaciones en píxeles
+
+            // Agregar los botes a la lista
+            botes.Add(new Bote(1, 115, 173, PBBote1));
+            botes.Add(new Bote(2, 265, 173, PBBote2));
+            botes.Add(new Bote(3, 415, 173, PBBote3));
+            botes.Add(new Bote(4, 565, 173, PBBote4));
 
             // Configura la GUI
             InitializeGUI();
@@ -66,10 +74,36 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                     int currentEmbarcadero = rutaOptima[currentIndex] - 1;
                     int nextEmbarcadero = rutaOptima[nextIndex] - 1;
 
-                    int interpolatedPosition = (int)(embarcaderos[currentEmbarcadero] +
-                                                     progress * (embarcaderos[nextEmbarcadero] - embarcaderos[currentEmbarcadero]));
+                    int interpolatedPositionLeft = (int)(embarcaderos[currentEmbarcadero] +
+                                                         progress * (embarcaderos[nextEmbarcadero] - embarcaderos[currentEmbarcadero]));
 
-                    PBBote.Left = interpolatedPosition;
+                    // Buscar el bote correspondiente al embarcadero actual y ajustar la posición de su PictureBox
+                    Bote boteActual = botes.FirstOrDefault(bote => bote.NumeroEmbarcadero == currentEmbarcadero + 1);
+                    if (boteActual != null)
+                    {
+                        // Baja 50 pixeles suavemente utilizando interpolación cúbica
+                        if (rutaOptima.Count == 2)
+                        {
+                            if (currentFrame == 0)
+                            {
+                                boteActual.PBBote.Top += 50;
+                            }
+                        }
+                        else
+                        {
+                            boteActual.PBBote.BringToFront();
+
+                            double verticalProgress = progress * progress * (3 - 2 * progress); // Interpolación cúbica
+
+                            int originalTop = boteActual.PosicionOriginalTop;
+                            int targetTop = originalTop + 50; // Posición final después del descenso
+
+                            int verticalPosition = (int)(originalTop +
+                                                         verticalProgress * (targetTop - originalTop));
+                            boteActual.PBBote.Top = verticalPosition;
+                        }
+                        boteActual.PBBote.Left = interpolatedPositionLeft;
+                    }
 
                     currentFrame++;
                 }
@@ -86,8 +120,18 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             }
         }
 
+
+
+
+
         private void IniciarSimulacion_Click(object sender, EventArgs e)
         {
+            timer.Stop();
+            foreach (Bote bote in botes)
+            {
+                bote.RestaurarPosicion();
+            }
+
             // Validar entrada de usuario
             if (!int.TryParse(txtOrigen.Text, out int origen) ||
                 !int.TryParse(txtDestino.Text, out int destino))
@@ -126,6 +170,25 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             currentFrame = 0;
             timer.Start();// Iniciar el timer
         }
-    }
 
+        //Para restaurar la posición de los barcos.
+        private void txtOrigen_TextChanged(object sender, EventArgs e)
+        {
+            timer.Stop();
+            // Restaurar la posición de todos los barcos
+            foreach (Bote bote in botes)
+            {
+                bote.RestaurarPosicion();
+            }
+        }
+        private void txtDestino_TextChanged(object sender, EventArgs e)
+        {
+            timer.Stop();
+            // Restaurar la posición de todos los barcos
+            foreach (Bote bote in botes)
+            {
+                bote.RestaurarPosicion();
+            }
+        }
+    }
 }
