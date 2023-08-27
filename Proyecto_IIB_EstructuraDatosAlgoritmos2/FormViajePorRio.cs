@@ -8,31 +8,36 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
         private Timer timer;
         private int posicionBote = 0; // Posición inicial del bote
         private int[] embarcaderos; // Posiciones de los embarcaderos
-
+        List<int> rutaOptima;
         public FormViajePorRio()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+
 
             viaje = new ViajePorRio();
-            embarcaderos = new int[] { 120, 270, 420, 570, 720 }; // Ubicaciones en píxeles
+            embarcaderos = new int[] { 0, 120, 270, 420, 570, 720 }; // Ubicaciones en píxeles
 
             // Configura la GUI
             InitializeGUI();
+            // Deshabilitar temporalmente la selección de celdas
+            dGVTarifas.Enabled = false;
+
+            // Limpia la selección de celdas en el DataGridView al inicializar
+            dGVTarifas.ClearSelection();
+            // Habilitar la selección de celdas nuevamente
+            dGVTarifas.Enabled = true;
         }
-
-
         private void InitializeGUI()
         {
             MostrarTarifasDGV();
-            // Resto de la configuración de la GUI
+
 
             // Configurar el Timer
             timer = new Timer();
-            timer.Interval = 2000; // Intervalo en milisegundos (2 segundos)
+            timer.Interval = 1000; // Intervalo en milisegundos (1 segundo)
             timer.Tick += Timer_Tick;
         }
-
-
 
         private void MostrarTarifasDGV()
         {
@@ -52,42 +57,62 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             }
         }
 
-        private void btnCalcular_Click(object sender, EventArgs e)
-        {
-            int origen = Convert.ToInt32(txtOrigen.Text) - 1;
-            int destino = Convert.ToInt32(txtDestino.Text) - 1;
-
-            int costoMinimo = viaje.CalcularCostoMinimo(origen, destino);
-
-            // Recuperar la ruta óptima a partir de la matriz de rutas
-            List<int> rutaOptima = viaje.RecuperarRutaOptima(origen, destino);
-
-            // Mostrar el resultado en un cuadro de texto o etiqueta
-            lbResultado.Text = "Costo mínimo: " + costoMinimo.ToString();
-            lbRutasOptimas.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
-
-        }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            // Mover el bote al siguiente embarcadero
-            if (posicionBote < embarcaderos.Length - 1)
+            // Verificar si aún quedan posiciones en la lista de rutaOptima
+            if (posicionBote < rutaOptima.Count)
             {
+                // Actualizar la posición del bote según la próxima posición en la lista
+                int proximoEmbarcadero = rutaOptima[posicionBote];
+                PBBote.Left = embarcaderos[proximoEmbarcadero];//la ruta óptima ya empieza desde el 1
+
+                // Incrementar la posición para el próximo Tick
                 posicionBote++;
             }
             else
             {
-                // Detener el Timer cuando el bote llega al último embarcadero
+                // Detener el Timer cuando se hayan recorrido todos los embarcaderos en la rutaOptima
                 timer.Stop();
             }
-
-            // Actualizar la posición del bote en el PictureBox
-            PBBote.Left = embarcaderos[posicionBote];
         }
 
         private void IniciarSimulacion_Click(object sender, EventArgs e)
         {
+            // Validar entrada de usuario
+            if (!int.TryParse(txtOrigen.Text, out int origen) ||
+                !int.TryParse(txtDestino.Text, out int destino))
+            {
+                MessageBox.Show("Por favor, ingrese valores numéricos enteros.");
+                return;
+            }
+
+            origen--; // Convertir a índice
+            destino--;
+
+            if (origen < 0 || destino < 0 || origen >= viaje.n || destino >= viaje.n)
+            {
+                MessageBox.Show("Los valores deben estar dentro del rango de embarcaderos.");
+                return;
+            }
+
+            if (origen >= destino)
+            {
+                MessageBox.Show("El valor de origen debe ser menor que el valor de destino.");
+                return;
+            }
+
+            //Calcula el costo mínimo y la ruta óptima
+            int costoMinimo = viaje.CalcularCostoMinimo(origen, destino);
+
+            // Recuperar la ruta óptima a partir de la matriz de rutas
+            rutaOptima = viaje.RecuperarRutaOptima(origen, destino);
+
+            // Mostrar el resultado en el label
+            lbResultado.Text = "Costo mínimo: " + costoMinimo.ToString();
+            lbRutasOptimas.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
+
+            // Iniciar la simulación
             posicionBote = 0;
-            // Iniciar la simulación al hacer clic en el botón
             PBBote.Left = embarcaderos[posicionBote]; // Posicionar el bote al inicio
             timer.Start();
         }

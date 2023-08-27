@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormViajePorRio));
-            btnCalcular = new Button();
             txtOrigen = new TextBox();
             txtDestino = new TextBox();
             lbResultado = new Label();
@@ -37,8 +38,13 @@
             label1 = new Label();
             label2 = new Label();
             dGVTarifas = new DataGridView();
-            IniciarSimulacion = new Button();
+            Iniciar = new Button();
             PanelRio = new Panel();
+            lbE2 = new Label();
+            lbE3 = new Label();
+            lbE4 = new Label();
+            lbE5 = new Label();
+            lbE1 = new Label();
             PBBote = new PictureBox();
             PBE5 = new PictureBox();
             PBE4 = new PictureBox();
@@ -55,52 +61,46 @@
             ((System.ComponentModel.ISupportInitialize)PBE1).BeginInit();
             SuspendLayout();
             // 
-            // btnCalcular
-            // 
-            btnCalcular.Location = new Point(257, 51);
-            btnCalcular.Name = "btnCalcular";
-            btnCalcular.Size = new Size(94, 29);
-            btnCalcular.TabIndex = 0;
-            btnCalcular.Text = "Calcular";
-            btnCalcular.UseVisualStyleBackColor = true;
-            btnCalcular.Click += btnCalcular_Click;
-            // 
             // txtOrigen
             // 
-            txtOrigen.Location = new Point(98, 24);
+            txtOrigen.Location = new Point(90, 27);
             txtOrigen.Name = "txtOrigen";
-            txtOrigen.Size = new Size(125, 27);
+            txtOrigen.Size = new Size(99, 27);
             txtOrigen.TabIndex = 1;
             // 
             // txtDestino
             // 
-            txtDestino.Location = new Point(98, 72);
+            txtDestino.Location = new Point(90, 60);
             txtDestino.Name = "txtDestino";
-            txtDestino.Size = new Size(125, 27);
+            txtDestino.Size = new Size(99, 27);
             txtDestino.TabIndex = 2;
             // 
             // lbResultado
             // 
             lbResultado.AutoSize = true;
-            lbResultado.Location = new Point(371, 27);
+            lbResultado.BackColor = Color.White;
+            lbResultado.BorderStyle = BorderStyle.FixedSingle;
+            lbResultado.Location = new Point(564, 69);
             lbResultado.Name = "lbResultado";
-            lbResultado.Size = new Size(50, 20);
+            lbResultado.Size = new Size(104, 22);
             lbResultado.TabIndex = 3;
-            lbResultado.Text = "label1";
+            lbResultado.Text = "Costo mínimo";
             // 
             // lbRutasOptimas
             // 
             lbRutasOptimas.AutoSize = true;
-            lbRutasOptimas.Location = new Point(371, 62);
+            lbRutasOptimas.BackColor = Color.White;
+            lbRutasOptimas.BorderStyle = BorderStyle.FixedSingle;
+            lbRutasOptimas.Location = new Point(787, 69);
             lbRutasOptimas.Name = "lbRutasOptimas";
-            lbRutasOptimas.Size = new Size(50, 20);
+            lbRutasOptimas.Size = new Size(93, 22);
             lbRutasOptimas.TabIndex = 5;
-            lbRutasOptimas.Text = "label1";
+            lbRutasOptimas.Text = "Ruta óptima";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(13, 27);
+            label1.Location = new Point(27, 30);
             label1.Name = "label1";
             label1.Size = new Size(57, 20);
             label1.TabIndex = 6;
@@ -109,7 +109,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(13, 79);
+            label2.Location = new Point(21, 63);
             label2.Name = "label2";
             label2.Size = new Size(63, 20);
             label2.TabIndex = 7;
@@ -117,44 +117,126 @@
             // 
             // dGVTarifas
             // 
+            dGVTarifas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dGVTarifas.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dGVTarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dGVTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVTarifas.Location = new Point(12, 142);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dGVTarifas.DefaultCellStyle = dataGridViewCellStyle2;
+            dGVTarifas.GridColor = Color.DarkGray;
+            dGVTarifas.ImeMode = ImeMode.NoControl;
+            dGVTarifas.Location = new Point(27, 103);
             dGVTarifas.Name = "dGVTarifas";
+            dGVTarifas.ReadOnly = true;
+            dGVTarifas.RowHeadersVisible = false;
             dGVTarifas.RowHeadersWidth = 51;
             dGVTarifas.RowTemplate.Height = 29;
-            dGVTarifas.Size = new Size(450, 340);
-            dGVTarifas.TabIndex = 8;
+            dGVTarifas.Size = new Size(280, 323);
+            dGVTarifas.TabIndex = 0;
             // 
-            // IniciarSimulacion
+            // Iniciar
             // 
-            IniciarSimulacion.Location = new Point(534, 58);
-            IniciarSimulacion.Name = "IniciarSimulacion";
-            IniciarSimulacion.Size = new Size(155, 29);
-            IniciarSimulacion.TabIndex = 9;
-            IniciarSimulacion.Text = "Iniciar simulación";
-            IniciarSimulacion.UseVisualStyleBackColor = true;
-            IniciarSimulacion.Click += IniciarSimulacion_Click;
+            Iniciar.Location = new Point(334, 60);
+            Iniciar.Name = "Iniciar";
+            Iniciar.Size = new Size(120, 29);
+            Iniciar.TabIndex = 9;
+            Iniciar.Text = "Iniciar";
+            Iniciar.UseVisualStyleBackColor = true;
+            Iniciar.Click += IniciarSimulacion_Click;
             // 
             // PanelRio
             // 
             PanelRio.BackgroundImage = (Image)resources.GetObject("PanelRio.BackgroundImage");
             PanelRio.BackgroundImageLayout = ImageLayout.Stretch;
+            PanelRio.Controls.Add(lbE2);
+            PanelRio.Controls.Add(lbE3);
+            PanelRio.Controls.Add(lbE4);
+            PanelRio.Controls.Add(lbE5);
+            PanelRio.Controls.Add(lbE1);
             PanelRio.Controls.Add(PBBote);
             PanelRio.Controls.Add(PBE5);
             PanelRio.Controls.Add(PBE4);
             PanelRio.Controls.Add(PBE2);
             PanelRio.Controls.Add(PBE3);
             PanelRio.Controls.Add(PBE1);
-            PanelRio.Location = new Point(490, 142);
+            PanelRio.Location = new Point(335, 103);
             PanelRio.Name = "PanelRio";
-            PanelRio.Size = new Size(833, 340);
+            PanelRio.Size = new Size(833, 323);
             PanelRio.TabIndex = 11;
+            // 
+            // lbE2
+            // 
+            lbE2.AutoSize = true;
+            lbE2.BackColor = Color.Transparent;
+            lbE2.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbE2.Location = new Point(296, 79);
+            lbE2.Name = "lbE2";
+            lbE2.Size = new Size(24, 29);
+            lbE2.TabIndex = 22;
+            lbE2.Text = "2";
+            // 
+            // lbE3
+            // 
+            lbE3.AutoSize = true;
+            lbE3.BackColor = Color.Transparent;
+            lbE3.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbE3.Location = new Point(441, 79);
+            lbE3.Name = "lbE3";
+            lbE3.Size = new Size(24, 29);
+            lbE3.TabIndex = 21;
+            lbE3.Text = "3";
+            // 
+            // lbE4
+            // 
+            lbE4.AutoSize = true;
+            lbE4.BackColor = Color.Transparent;
+            lbE4.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbE4.Location = new Point(596, 79);
+            lbE4.Name = "lbE4";
+            lbE4.Size = new Size(26, 29);
+            lbE4.TabIndex = 20;
+            lbE4.Text = "4";
+            // 
+            // lbE5
+            // 
+            lbE5.AutoSize = true;
+            lbE5.BackColor = Color.Transparent;
+            lbE5.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbE5.Location = new Point(739, 79);
+            lbE5.Name = "lbE5";
+            lbE5.Size = new Size(25, 29);
+            lbE5.TabIndex = 19;
+            lbE5.Text = "5";
+            // 
+            // lbE1
+            // 
+            lbE1.AutoSize = true;
+            lbE1.BackColor = Color.Transparent;
+            lbE1.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbE1.Location = new Point(143, 79);
+            lbE1.Name = "lbE1";
+            lbE1.Size = new Size(23, 29);
+            lbE1.TabIndex = 18;
+            lbE1.Text = "1";
             // 
             // PBBote
             // 
             PBBote.BackColor = Color.Transparent;
             PBBote.Image = (Image)resources.GetObject("PBBote.Image");
-            PBBote.Location = new Point(0, 161);
+            PBBote.Location = new Point(0, 154);
             PBBote.Name = "PBBote";
             PBBote.Size = new Size(64, 46);
             PBBote.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -164,7 +246,7 @@
             // PBE5
             // 
             PBE5.Image = (Image)resources.GetObject("PBE5.Image");
-            PBE5.Location = new Point(700, 130);
+            PBE5.Location = new Point(700, 123);
             PBE5.Name = "PBE5";
             PBE5.Size = new Size(103, 66);
             PBE5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -174,7 +256,7 @@
             // PBE4
             // 
             PBE4.Image = (Image)resources.GetObject("PBE4.Image");
-            PBE4.Location = new Point(550, 130);
+            PBE4.Location = new Point(550, 123);
             PBE4.Name = "PBE4";
             PBE4.Size = new Size(103, 66);
             PBE4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -184,7 +266,7 @@
             // PBE2
             // 
             PBE2.Image = (Image)resources.GetObject("PBE2.Image");
-            PBE2.Location = new Point(250, 130);
+            PBE2.Location = new Point(250, 123);
             PBE2.Name = "PBE2";
             PBE2.Size = new Size(103, 66);
             PBE2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -194,7 +276,7 @@
             // PBE3
             // 
             PBE3.Image = (Image)resources.GetObject("PBE3.Image");
-            PBE3.Location = new Point(400, 130);
+            PBE3.Location = new Point(400, 123);
             PBE3.Name = "PBE3";
             PBE3.Size = new Size(103, 66);
             PBE3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -204,7 +286,7 @@
             // PBE1
             // 
             PBE1.Image = (Image)resources.GetObject("PBE1.Image");
-            PBE1.Location = new Point(100, 130);
+            PBE1.Location = new Point(100, 123);
             PBE1.Name = "PBE1";
             PBE1.Size = new Size(103, 66);
             PBE1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -215,9 +297,10 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1354, 526);
+            BackColor = Color.White;
+            ClientSize = new Size(1191, 451);
             Controls.Add(PanelRio);
-            Controls.Add(IniciarSimulacion);
+            Controls.Add(Iniciar);
             Controls.Add(dGVTarifas);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -225,11 +308,11 @@
             Controls.Add(lbResultado);
             Controls.Add(txtDestino);
             Controls.Add(txtOrigen);
-            Controls.Add(btnCalcular);
             Name = "FormViajePorRio";
-            Text = "Form1";
+            Text = "Viaje más barato por río";
             ((System.ComponentModel.ISupportInitialize)dGVTarifas).EndInit();
             PanelRio.ResumeLayout(false);
+            PanelRio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PBBote).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBE5).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBE4).EndInit();
@@ -241,8 +324,6 @@
         }
 
         #endregion
-
-        private Button btnCalcular;
         private TextBox txtOrigen;
         private TextBox txtDestino;
         private Label lbResultado;
@@ -250,7 +331,7 @@
         private Label label1;
         private Label label2;
         private DataGridView dGVTarifas;
-        private Button IniciarSimulacion;
+        private Button Iniciar;
         private Panel PanelRio;
         private PictureBox PBE1;
         private PictureBox PBE5;
@@ -258,5 +339,10 @@
         private PictureBox PBE2;
         private PictureBox PBE3;
         private PictureBox PBBote;
+        private Label lbE1;
+        private Label lbE2;
+        private Label lbE3;
+        private Label lbE4;
+        private Label lbE5;
     }
 }
