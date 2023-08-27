@@ -63,16 +63,16 @@
             // 
             // txtOrigen
             // 
-            txtOrigen.Location = new Point(90, 27);
+            txtOrigen.Location = new Point(103, 28);
             txtOrigen.Name = "txtOrigen";
-            txtOrigen.Size = new Size(99, 27);
+            txtOrigen.Size = new Size(43, 27);
             txtOrigen.TabIndex = 1;
             // 
             // txtDestino
             // 
-            txtDestino.Location = new Point(90, 60);
+            txtDestino.Location = new Point(103, 66);
             txtDestino.Name = "txtDestino";
-            txtDestino.Size = new Size(99, 27);
+            txtDestino.Size = new Size(43, 27);
             txtDestino.TabIndex = 2;
             // 
             // lbResultado
@@ -80,7 +80,7 @@
             lbResultado.AutoSize = true;
             lbResultado.BackColor = Color.White;
             lbResultado.BorderStyle = BorderStyle.FixedSingle;
-            lbResultado.Location = new Point(564, 69);
+            lbResultado.Location = new Point(339, 75);
             lbResultado.Name = "lbResultado";
             lbResultado.Size = new Size(104, 22);
             lbResultado.TabIndex = 3;
@@ -91,7 +91,7 @@
             lbRutasOptimas.AutoSize = true;
             lbRutasOptimas.BackColor = Color.White;
             lbRutasOptimas.BorderStyle = BorderStyle.FixedSingle;
-            lbRutasOptimas.Location = new Point(787, 69);
+            lbRutasOptimas.Location = new Point(562, 75);
             lbRutasOptimas.Name = "lbRutasOptimas";
             lbRutasOptimas.Size = new Size(93, 22);
             lbRutasOptimas.TabIndex = 5;
@@ -100,7 +100,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(27, 30);
+            label1.Location = new Point(40, 31);
             label1.Name = "label1";
             label1.Size = new Size(57, 20);
             label1.TabIndex = 6;
@@ -109,7 +109,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(21, 63);
+            label2.Location = new Point(34, 69);
             label2.Name = "label2";
             label2.Size = new Size(63, 20);
             label2.TabIndex = 7;
@@ -121,7 +121,7 @@
             dGVTarifas.BackgroundColor = Color.White;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -149,7 +149,7 @@
             // 
             // Iniciar
             // 
-            Iniciar.Location = new Point(334, 60);
+            Iniciar.Location = new Point(187, 42);
             Iniciar.Name = "Iniciar";
             Iniciar.Size = new Size(120, 29);
             Iniciar.TabIndex = 9;
@@ -309,7 +309,7 @@
             Controls.Add(txtDestino);
             Controls.Add(txtOrigen);
             Name = "FormViajePorRio";
-            Text = "Viaje más barato por río";
+            Text = "VIAJE MÁS BARATO POR RÍO - GRUPO 6";
             ((System.ComponentModel.ISupportInitialize)dGVTarifas).EndInit();
             PanelRio.ResumeLayout(false);
             PanelRio.PerformLayout();

@@ -6,9 +6,13 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
     {
         ViajePorRio viaje;
         private Timer timer;
-        private int posicionBote = 0; // Posición inicial del bote
         private int[] embarcaderos; // Posiciones de los embarcaderos
         List<int> rutaOptima;
+
+        //para navegar
+        private const int FRAMES_PER_SECOND = 60; // fps
+        private int currentFrame = 0;
+        private int totalFrames = 0;
         public FormViajePorRio()
         {
             InitializeComponent();
@@ -16,7 +20,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 
 
             viaje = new ViajePorRio();
-            embarcaderos = new int[] { 0, 120, 270, 420, 570, 720 }; // Ubicaciones en píxeles
+            embarcaderos = new int[] { 120, 270, 420, 570, 720 }; // Ubicaciones en píxeles
 
             // Configura la GUI
             InitializeGUI();
@@ -35,7 +39,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 
             // Configurar el Timer
             timer = new Timer();
-            timer.Interval = 1000; // Intervalo en milisegundos (1 segundo)
+            timer.Interval = 1000 / FRAMES_PER_SECOND;
             timer.Tick += Timer_Tick;
         }
 
@@ -59,19 +63,34 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            // Verificar si aún quedan posiciones en la lista de rutaOptima
-            if (posicionBote < rutaOptima.Count)
+            if (currentFrame < totalFrames)
             {
-                // Actualizar la posición del bote según la próxima posición en la lista
-                int proximoEmbarcadero = rutaOptima[posicionBote];
-                PBBote.Left = embarcaderos[proximoEmbarcadero];//la ruta óptima ya empieza desde el 1
+                int currentIndex = currentFrame / FRAMES_PER_SECOND;
+                int nextIndex = currentIndex + 1;
 
-                // Incrementar la posición para el próximo Tick
-                posicionBote++;
+                if (nextIndex < rutaOptima.Count)
+                {
+                    double progress = (double)(currentFrame % FRAMES_PER_SECOND) / FRAMES_PER_SECOND;
+
+                    int currentEmbarcadero = rutaOptima[currentIndex] - 1;
+                    int nextEmbarcadero = rutaOptima[nextIndex] - 1;
+
+                    int interpolatedPosition = (int)(embarcaderos[currentEmbarcadero] +
+                                                     progress * (embarcaderos[nextEmbarcadero] - embarcaderos[currentEmbarcadero]));
+
+                    PBBote.Left = interpolatedPosition;
+
+                    currentFrame++;
+                }
+                else
+                {
+                    // Detener el Timer cuando se hayan recorrido todos los frames
+                    timer.Stop();
+                }
             }
             else
             {
-                // Detener el Timer cuando se hayan recorrido todos los embarcaderos en la rutaOptima
+                // Detener el Timer cuando se hayan recorrido todos los frames
                 timer.Stop();
             }
         }
@@ -82,7 +101,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             if (!int.TryParse(txtOrigen.Text, out int origen) ||
                 !int.TryParse(txtDestino.Text, out int destino))
             {
-                MessageBox.Show("Por favor, ingrese valores numéricos enteros.");
+                MessageBox.Show("Ingrese el número del embarcadero de origen y destino.");
                 return;
             }
 
@@ -97,7 +116,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 
             if (origen >= destino)
             {
-                MessageBox.Show("El valor de origen debe ser menor que el valor de destino.");
+                MessageBox.Show("Solo puede ir río abajo.");
                 return;
             }
 
@@ -111,10 +130,10 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             lbResultado.Text = "Costo mínimo: " + costoMinimo.ToString();
             lbRutasOptimas.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
 
-            // Iniciar la simulación
-            posicionBote = 0;
-            PBBote.Left = embarcaderos[posicionBote]; // Posicionar el bote al inicio
-            timer.Start();
+            //inicia y reinicia la simulación
+            totalFrames = rutaOptima.Count * FRAMES_PER_SECOND;
+            currentFrame = 0;
+            timer.Start();// Iniciar el timer
         }
     }
 
