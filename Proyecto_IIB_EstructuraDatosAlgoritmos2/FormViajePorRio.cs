@@ -24,19 +24,10 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 
             // Configura la GUI
             InitializeGUI();
-            // Deshabilitar temporalmente la selección de celdas
-            dGVTarifas.Enabled = false;
-
-            // Limpia la selección de celdas en el DataGridView al inicializar
-            dGVTarifas.ClearSelection();
-            // Habilitar la selección de celdas nuevamente
-            dGVTarifas.Enabled = true;
         }
         private void InitializeGUI()
         {
             MostrarTarifasDGV();
-
-
             // Configurar el Timer
             timer = new Timer();
             timer.Interval = 1000 / FRAMES_PER_SECOND;

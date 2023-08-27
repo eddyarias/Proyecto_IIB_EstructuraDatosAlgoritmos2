@@ -149,9 +149,13 @@
             // 
             // Iniciar
             // 
-            Iniciar.Location = new Point(187, 42);
+            Iniciar.FlatAppearance.BorderColor = Color.Lime;
+            Iniciar.FlatAppearance.BorderSize = 3;
+            Iniciar.FlatStyle = FlatStyle.Flat;
+            Iniciar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            Iniciar.Location = new Point(187, 40);
             Iniciar.Name = "Iniciar";
-            Iniciar.Size = new Size(120, 29);
+            Iniciar.Size = new Size(120, 40);
             Iniciar.TabIndex = 9;
             Iniciar.Text = "Iniciar";
             Iniciar.UseVisualStyleBackColor = true;
