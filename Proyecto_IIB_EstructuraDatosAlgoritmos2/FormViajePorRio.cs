@@ -25,10 +25,10 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             embarcaderos = new int[] { 115, 265, 415, 565, 715 }; // Ubicaciones en píxeles
 
             // Agregar los botes a la lista
-            botes.Add(new Bote(1, 115, 173, PBBote1));
-            botes.Add(new Bote(2, 265, 173, PBBote2));
-            botes.Add(new Bote(3, 415, 173, PBBote3));
-            botes.Add(new Bote(4, 565, 173, PBBote4));
+            botes.Add(new Bote(1, 115, 173, BUBote1));
+            botes.Add(new Bote(2, 265, 173, BUBote2));
+            botes.Add(new Bote(3, 415, 173, BUBote3));
+            botes.Add(new Bote(4, 565, 173, BUBote4));
 
             // Configura la GUI
             InitializeGUI();
