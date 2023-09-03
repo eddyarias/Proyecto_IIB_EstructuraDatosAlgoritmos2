@@ -51,7 +51,7 @@
             for (int k = origen + 1; k <= destino; k++)
             {
                 int costoViajeDirecto = tarifas[origen, k];
-                int costoRestante = CalcularCostoMinimoBottomUp(k, destino);
+                int costoRestante = CalcularCostoMinimoTopDown(k, destino);
                 int costoTotal = costoViajeDirecto + costoRestante;
 
                 //// Calculamos el costo mínimo tomando el mínimo entre todas las posibilidades de embarcaderos intermedios

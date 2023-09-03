@@ -176,7 +176,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             }
 
             //Calcula el costo mínimo y la ruta óptima
-            int costoMinimo = viaje.CalcularCostoMinimoBottomUp(origen, destino);
+            int costoMinimo = viaje.CalcularCostoMinimoTopDown(origen, destino);
 
             // Recuperar la ruta óptima a partir de la matriz de rutas
             rutaOptima = viaje.RecuperarRutaOptima(origen, destino);
