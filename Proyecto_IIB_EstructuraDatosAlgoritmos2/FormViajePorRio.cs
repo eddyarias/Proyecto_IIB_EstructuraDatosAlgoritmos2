@@ -9,8 +9,8 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
         private Timer timer;
         private int[] embarcaderos; // Posiciones de los embarcaderos
         List<int> rutaOptima;
-        List<Bote> botes = new List<Bote>();
-
+        List<Bote> botesBU;
+        List<Bote> botesTD;
         //para navegar
         private const int FRAMES_PER_SECOND = 30; // fps
         private int currentFrame = 0;
@@ -22,13 +22,31 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             StartPosition = FormStartPosition.CenterScreen;
 
             viaje = new ViajePorRio();
-            embarcaderos = new int[] { 115, 265, 415, 565, 715 }; // Ubicaciones en píxeles
+            botesBU = new List<Bote>();
+            botesTD = new List<Bote>();
+            embarcaderos = new int[] { 50, 200, 350, 500, 650, 800, 950, 1100, 1250, 1400 }; // Ubicaciones en píxeles
 
-            // Agregar los botes a la lista
-            botes.Add(new Bote(1, 115, 173, BUBote1));
-            botes.Add(new Bote(2, 265, 173, BUBote2));
-            botes.Add(new Bote(3, 415, 173, BUBote3));
-            botes.Add(new Bote(4, 565, 173, BUBote4));
+            // Agregar los botes a la lista Bottom-Up
+            botesBU.Add(new Bote(1, 40, 173, BUBote1));
+            botesBU.Add(new Bote(2, 190, 173, BUBote2));
+            botesBU.Add(new Bote(3, 340, 173, BUBote3));
+            botesBU.Add(new Bote(4, 490, 173, BUBote4));
+            botesBU.Add(new Bote(5, 640, 173, BUBote5));
+            botesBU.Add(new Bote(6, 790, 173, BUBote6));
+            botesBU.Add(new Bote(7, 940, 173, BUBote7));
+            botesBU.Add(new Bote(8, 1090, 173, BUBote8));
+            botesBU.Add(new Bote(9, 1240, 173, BUBote9));
+
+            // Agregar los botes a la lista Top-Down
+            botesTD.Add(new Bote(1, 40, 173, TDBote1));
+            botesTD.Add(new Bote(2, 190, 173, TDBote2));
+            botesTD.Add(new Bote(3, 340, 173, TDBote3));
+            botesTD.Add(new Bote(4, 490, 173, TDBote4));
+            botesTD.Add(new Bote(5, 640, 173, TDBote5));
+            botesTD.Add(new Bote(6, 790, 173, TDBote6));
+            botesTD.Add(new Bote(7, 940, 173, TDBote7));
+            botesTD.Add(new Bote(8, 1090, 173, TDBote8));
+            botesTD.Add(new Bote(9, 1240, 173, TDBote9));
 
             // Configura la GUI
             InitializeGUI();
@@ -38,7 +56,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             MostrarTarifasDGV();
             // Configurar el Timer
             timer = new Timer();
-            timer.Interval = 1000 / FRAMES_PER_SECOND;
+            timer.Interval = 1000 / (FRAMES_PER_SECOND / 3); // Actualizar cada 3 cuadros
             timer.Tick += Timer_Tick;
         }
 
@@ -78,31 +96,33 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                                                          progress * (embarcaderos[nextEmbarcadero] - embarcaderos[currentEmbarcadero]));
 
                     // Buscar el bote correspondiente al embarcadero actual y ajustar la posición de su PictureBox
-                    Bote boteActual = botes.FirstOrDefault(bote => bote.NumeroEmbarcadero == currentEmbarcadero + 1);
-                    if (boteActual != null)
+                    Bote boteActualBU = botesBU.FirstOrDefault(bote => bote.NumeroEmbarcadero == currentEmbarcadero + 1);
+                    Bote boteActualTD = botesTD.FirstOrDefault(bote => bote.NumeroEmbarcadero == currentEmbarcadero + 1);
+                    if (boteActualBU != null&& boteActualTD != null)
                     {
                         // Baja 50 pixeles suavemente utilizando interpolación cúbica
                         if (rutaOptima.Count == 2)
                         {
                             if (currentFrame == 0)
                             {
-                                boteActual.PBBote.Top += 50;
+                                boteActualBU.PBBote.Top += 60;
+                                boteActualTD.PBBote.Top += 60;
                             }
                         }
                         else
                         {
-                            boteActual.PBBote.BringToFront();
-
                             double verticalProgress = progress * progress * (3 - 2 * progress); // Interpolación cúbica
 
-                            int originalTop = boteActual.PosicionOriginalTop;
-                            int targetTop = originalTop + 50; // Posición final después del descenso
+                            int originalTop = boteActualBU.PosicionOriginalTop;
+                            int targetTop = originalTop + 60; // Posición final después del descenso
 
                             int verticalPosition = (int)(originalTop +
                                                          verticalProgress * (targetTop - originalTop));
-                            boteActual.PBBote.Top = verticalPosition;
+                            boteActualBU.PBBote.Top = verticalPosition;
+                            boteActualTD.PBBote.Top = verticalPosition;
                         }
-                        boteActual.PBBote.Left = interpolatedPositionLeft;
+                        boteActualBU.PBBote.Left = interpolatedPositionLeft;
+                        boteActualTD.PBBote.Left = interpolatedPositionLeft;
                     }
 
                     currentFrame++;
@@ -120,14 +140,14 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             }
         }
 
-
-
-
-
         private void IniciarSimulacion_Click(object sender, EventArgs e)
         {
             timer.Stop();
-            foreach (Bote bote in botes)
+            foreach (Bote bote in botesBU)
+            {
+                bote.RestaurarPosicion();
+            }
+            foreach (Bote bote in botesTD)
             {
                 bote.RestaurarPosicion();
             }
@@ -156,7 +176,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             }
 
             //Calcula el costo mínimo y la ruta óptima
-            int costoMinimo = viaje.CalcularCostoMinimo(origen, destino);
+            int costoMinimo = viaje.CalcularCostoMinimoBottomUp(origen, destino);
 
             // Recuperar la ruta óptima a partir de la matriz de rutas
             rutaOptima = viaje.RecuperarRutaOptima(origen, destino);
@@ -176,7 +196,11 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
         {
             timer.Stop();
             // Restaurar la posición de todos los barcos
-            foreach (Bote bote in botes)
+            foreach (Bote bote in botesBU)
+            {
+                bote.RestaurarPosicion();
+            }
+            foreach (Bote bote in botesTD)
             {
                 bote.RestaurarPosicion();
             }
@@ -185,7 +209,11 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
         {
             timer.Stop();
             // Restaurar la posición de todos los barcos
-            foreach (Bote bote in botes)
+            foreach (Bote bote in botesBU)
+            {
+                bote.RestaurarPosicion();
+            }
+            foreach (Bote bote in botesTD)
             {
                 bote.RestaurarPosicion();
             }

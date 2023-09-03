@@ -44,6 +44,7 @@
             BUBote5 = new PictureBox();
             BUBote9 = new PictureBox();
             BUBote8 = new PictureBox();
+            label3 = new Label();
             BUBote7 = new PictureBox();
             BUBote6 = new PictureBox();
             label4 = new Label();
@@ -70,11 +71,12 @@
             PBE2 = new PictureBox();
             PBE3 = new PictureBox();
             PBE1 = new PictureBox();
-            label3 = new Label();
             label9 = new Label();
             panel1 = new Panel();
             TDBote10 = new PictureBox();
+            label20 = new Label();
             TDBote5 = new PictureBox();
+            label21 = new Label();
             TDBote9 = new PictureBox();
             TDBote8 = new PictureBox();
             TDBote7 = new PictureBox();
@@ -103,8 +105,6 @@
             pictureBox18 = new PictureBox();
             pictureBox19 = new PictureBox();
             pictureBox20 = new PictureBox();
-            label20 = new Label();
-            label21 = new Label();
             ((System.ComponentModel.ISupportInitialize)dGVTarifas).BeginInit();
             PanelRio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BUBote10).BeginInit();
@@ -235,7 +235,7 @@
             dGVTarifas.RowHeadersVisible = false;
             dGVTarifas.RowHeadersWidth = 51;
             dGVTarifas.RowTemplate.Height = 29;
-            dGVTarifas.Size = new Size(257, 611);
+            dGVTarifas.Size = new Size(270, 611);
             dGVTarifas.TabIndex = 0;
             // 
             // Iniciar
@@ -338,6 +338,17 @@
             BUBote8.SizeMode = PictureBoxSizeMode.StretchImage;
             BUBote8.TabIndex = 38;
             BUBote8.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Modern No. 20", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.Red;
+            label3.Location = new Point(6, 6);
+            label3.Name = "label3";
+            label3.Size = new Size(122, 21);
+            label3.TabIndex = 12;
+            label3.Text = "BOTTOM-UP";
             // 
             // BUBote7
             // 
@@ -621,17 +632,6 @@
             PBE1.TabIndex = 11;
             PBE1.TabStop = false;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Modern No. 20", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.Red;
-            label3.Location = new Point(6, 6);
-            label3.Name = "label3";
-            label3.Size = new Size(122, 21);
-            label3.TabIndex = 12;
-            label3.Text = "BOTTOM-UP";
-            // 
             // label9
             // 
             label9.AutoSize = true;
@@ -697,6 +697,17 @@
             TDBote10.TabIndex = 41;
             TDBote10.TabStop = false;
             // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.BackColor = Color.White;
+            label20.BorderStyle = BorderStyle.FixedSingle;
+            label20.Location = new Point(473, 6);
+            label20.Name = "label20";
+            label20.Size = new Size(93, 22);
+            label20.TabIndex = 14;
+            label20.Text = "Ruta óptima";
+            // 
             // TDBote5
             // 
             TDBote5.BackColor = Color.Transparent;
@@ -707,6 +718,17 @@
             TDBote5.SizeMode = PictureBoxSizeMode.StretchImage;
             TDBote5.TabIndex = 40;
             TDBote5.TabStop = false;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.BackColor = Color.White;
+            label21.BorderStyle = BorderStyle.FixedSingle;
+            label21.Location = new Point(250, 6);
+            label21.Name = "label21";
+            label21.Size = new Size(104, 22);
+            label21.TabIndex = 13;
+            label21.Text = "Costo mínimo";
             // 
             // TDBote9
             // 
@@ -1011,28 +1033,6 @@
             pictureBox20.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox20.TabIndex = 11;
             pictureBox20.TabStop = false;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.White;
-            label20.BorderStyle = BorderStyle.FixedSingle;
-            label20.Location = new Point(473, 6);
-            label20.Name = "label20";
-            label20.Size = new Size(93, 22);
-            label20.TabIndex = 14;
-            label20.Text = "Ruta óptima";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.BackColor = Color.White;
-            label21.BorderStyle = BorderStyle.FixedSingle;
-            label21.Location = new Point(250, 6);
-            label21.Name = "label21";
-            label21.Size = new Size(104, 22);
-            label21.TabIndex = 13;
-            label21.Text = "Costo mínimo";
             // 
             // FormViajePorRio
             // 

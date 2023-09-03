@@ -33,7 +33,8 @@
             rutas = new int[n, n];
         }
 
-        public int CalcularCostoMinimo(int origen, int destino)
+        //Milton
+        public int CalcularCostoMinimoBottomUp(int origen, int destino)
         {
             if (origen >= destino)
                 return 0; // No se puede viajar río arriba
@@ -50,7 +51,7 @@
             for (int k = origen + 1; k <= destino; k++)
             {
                 int costoViajeDirecto = tarifas[origen, k];
-                int costoRestante = CalcularCostoMinimo(k, destino);
+                int costoRestante = CalcularCostoMinimoBottomUp(k, destino);
                 int costoTotal = costoViajeDirecto + costoRestante;
 
                 //// Calculamos el costo mínimo tomando el mínimo entre todas las posibilidades de embarcaderos intermedios
@@ -70,6 +71,10 @@
             return costoMinimo;
         }
 
+        //javier, programacion dinamica para el viaje mas barato en rio con el enfoque TOP-DOWn
+        //public int CalcularCostoMinimoTopDown(int origen, int destino)
+        //{
+        //}
 
         public List<int> RecuperarRutaOptima(int origen, int destino)
         {
