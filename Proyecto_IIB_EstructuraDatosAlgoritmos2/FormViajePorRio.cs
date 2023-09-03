@@ -188,8 +188,8 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             lbRutasOptimasTD.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
 
 
-            //ButtonUp
-            int costoMinimo1 = viaje.CalcularCostoMinimoButtonUp(origen, destino);
+            //ButtomUp
+            int costoMinimo1 = viaje.CalcularCostoMinimoButtomUp(origen, destino);
             lbResultadoBU.Text = "Costo mínimo: " + costoMinimo1.ToString();
             lbRutasOptimasBU.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
 

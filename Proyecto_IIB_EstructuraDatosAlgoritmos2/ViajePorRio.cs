@@ -91,7 +91,7 @@
         }
 
 
-        public int CalcularCostoMinimoButtonUp(int origen, int destino)
+        public int CalcularCostoMinimoButtomUp(int origen, int destino)
         {
             // Crear un arreglo para mantener el costo mínimo para llegar a cada embarcadero.
             int[] costosMinimos = new int[n];
