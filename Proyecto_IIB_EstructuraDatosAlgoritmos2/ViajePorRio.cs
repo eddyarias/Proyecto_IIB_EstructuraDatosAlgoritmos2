@@ -13,7 +13,7 @@
         public int[,] tarifas; // Matriz triangular superior de tarifas
         public int n; // Número de embarcaderos
         public int[,] dp; // Matriz de programación dinámica para almacenar los resultados calculados
-        public int[,] rutas; // Matriz para almacenar las rutas óptimas TD
+        public int[,] rutas; // Matriz para almacenar las rutas óptimas
 
         public ViajePorRio()
         {
@@ -37,7 +37,7 @@
 
         }
 
-
+        // Método para calcular el costo mínimo utilizando programación dinámica con enfoque "Top-Down"
         public int CalcularCostoMinimoTopDown(int origen, int destino)
         {
             if (origen >= destino)
@@ -48,8 +48,7 @@
                 return dp[origen, destino];
 
             int costoMinimo = int.MaxValue;
-            int siguienteEmbarcadero = -1; //ruta
-
+            int siguienteEmbarcadero = -1; // Ruta
 
             // Recorremos los posibles embarcaderos intermedios
             for (int k = origen + 1; k <= destino; k++)
@@ -58,10 +57,7 @@
                 int costoRestante = CalcularCostoMinimoTopDown(k, destino);
                 int costoTotal = costoViajeDirecto + costoRestante;
 
-                //// Calculamos el costo mínimo tomando el mínimo entre todas las posibilidades de embarcaderos intermedios
-                //costoMinimo = Math.Min(costoMinimo, costoTotal);
-
-                if (costoTotal < costoMinimo) //ruta
+                if (costoTotal < costoMinimo) // Actualizamos el costo mínimo y la siguiente ruta
                 {
                     costoMinimo = costoTotal;
                     siguienteEmbarcadero = k;
@@ -74,11 +70,6 @@
 
             return costoMinimo;
         }
-
-        //javier, programacion dinamica para el viaje mas barato en rio con el enfoque TOP-DOWn
-        //public int CalcularCostoMinimoTopDown(int origen, int destino)
-        //{
-        //}
 
         public List<int> RecuperarRutaOptima(int origen, int destino)
         {
@@ -134,5 +125,6 @@
     }
 
 }
+
 
 
