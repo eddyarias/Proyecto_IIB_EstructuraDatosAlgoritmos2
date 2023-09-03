@@ -34,7 +34,7 @@
         }
 
         //Milton
-        public int CalcularCostoMinimoBottomUp(int origen, int destino)
+        public int CalcularCostoMinimoTopDown(int origen, int destino)
         {
             if (origen >= destino)
                 return 0; // No se puede viajar río arriba
