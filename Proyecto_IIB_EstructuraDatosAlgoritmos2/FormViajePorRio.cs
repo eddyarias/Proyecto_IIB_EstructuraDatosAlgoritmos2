@@ -1,6 +1,8 @@
 namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 {
     using System;
+    using System.Diagnostics;
+    using System.Drawing.Drawing2D;
     using System.Windows.Forms;
 
     public partial class FormViajePorRio : Form
@@ -182,8 +184,8 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             rutaOptima = viaje.RecuperarRutaOptima(origen, destino);
 
             // Mostrar el resultado en el label
-            lbResultadoBU.Text = "Costo mínimo: " + costoMinimo.ToString();
-            lbRutasOptimasBU.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
+            lbResultado.Text = "Costo mínimo: " + costoMinimo.ToString();
+            lbRutasOptimas.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
 
             //inicia y reinicia la simulación
             totalFrames = rutaOptima.Count * FRAMES_PER_SECOND;
