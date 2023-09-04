@@ -220,5 +220,10 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                 bote.RestaurarPosicion();
             }
         }
+
+        private void FormViajePorRio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
