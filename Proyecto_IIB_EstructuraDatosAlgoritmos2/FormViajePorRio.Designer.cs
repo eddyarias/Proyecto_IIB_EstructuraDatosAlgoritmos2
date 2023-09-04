@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormViajePorRio));
             txtOrigen = new TextBox();
             txtDestino = new TextBox();
-            lbResultado = new Label();
-            lbRutasOptimas = new Label();
+            lbResultadoBU = new Label();
+            lbRutasOptimasBU = new Label();
             label1 = new Label();
             label2 = new Label();
             dGVTarifas = new DataGridView();
@@ -74,9 +74,9 @@
             label9 = new Label();
             panel1 = new Panel();
             TDBote10 = new PictureBox();
-            label20 = new Label();
+            lbRutasOptimasTD = new Label();
             TDBote5 = new PictureBox();
-            label21 = new Label();
+            lbResultadoTD = new Label();
             TDBote9 = new PictureBox();
             TDBote8 = new PictureBox();
             TDBote7 = new PictureBox();
@@ -166,27 +166,27 @@
             txtDestino.TabIndex = 2;
             txtDestino.TextChanged += txtDestino_TextChanged;
             // 
-            // lbResultado
+            // lbResultadoBU
             // 
-            lbResultado.AutoSize = true;
-            lbResultado.BackColor = Color.White;
-            lbResultado.BorderStyle = BorderStyle.FixedSingle;
-            lbResultado.Location = new Point(251, 5);
-            lbResultado.Name = "lbResultado";
-            lbResultado.Size = new Size(104, 22);
-            lbResultado.TabIndex = 3;
-            lbResultado.Text = "Costo mínimo";
+            lbResultadoBU.AutoSize = true;
+            lbResultadoBU.BackColor = Color.White;
+            lbResultadoBU.BorderStyle = BorderStyle.FixedSingle;
+            lbResultadoBU.Location = new Point(251, 5);
+            lbResultadoBU.Name = "lbResultadoBU";
+            lbResultadoBU.Size = new Size(104, 22);
+            lbResultadoBU.TabIndex = 3;
+            lbResultadoBU.Text = "Costo mínimo";
             // 
-            // lbRutasOptimas
+            // lbRutasOptimasBU
             // 
-            lbRutasOptimas.AutoSize = true;
-            lbRutasOptimas.BackColor = Color.White;
-            lbRutasOptimas.BorderStyle = BorderStyle.FixedSingle;
-            lbRutasOptimas.Location = new Point(474, 5);
-            lbRutasOptimas.Name = "lbRutasOptimas";
-            lbRutasOptimas.Size = new Size(93, 22);
-            lbRutasOptimas.TabIndex = 5;
-            lbRutasOptimas.Text = "Ruta óptima";
+            lbRutasOptimasBU.AutoSize = true;
+            lbRutasOptimasBU.BackColor = Color.White;
+            lbRutasOptimasBU.BorderStyle = BorderStyle.FixedSingle;
+            lbRutasOptimasBU.Location = new Point(474, 5);
+            lbRutasOptimasBU.Name = "lbRutasOptimasBU";
+            lbRutasOptimasBU.Size = new Size(93, 22);
+            lbRutasOptimasBU.TabIndex = 5;
+            lbRutasOptimasBU.Text = "Ruta óptima";
             // 
             // label1
             // 
@@ -210,23 +210,23 @@
             // 
             dGVTarifas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dGVTarifas.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dGVTarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dGVTarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dGVTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dGVTarifas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dGVTarifas.DefaultCellStyle = dataGridViewCellStyle4;
             dGVTarifas.GridColor = Color.DarkGray;
             dGVTarifas.ImeMode = ImeMode.NoControl;
             dGVTarifas.Location = new Point(12, 84);
@@ -267,9 +267,9 @@
             PanelRio.Controls.Add(label4);
             PanelRio.Controls.Add(label5);
             PanelRio.Controls.Add(label6);
-            PanelRio.Controls.Add(lbRutasOptimas);
+            PanelRio.Controls.Add(lbRutasOptimasBU);
             PanelRio.Controls.Add(label7);
-            PanelRio.Controls.Add(lbResultado);
+            PanelRio.Controls.Add(lbResultadoBU);
             PanelRio.Controls.Add(label8);
             PanelRio.Controls.Add(PBE10);
             PanelRio.Controls.Add(PBE9);
@@ -650,9 +650,9 @@
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(label9);
             panel1.Controls.Add(TDBote10);
-            panel1.Controls.Add(label20);
+            panel1.Controls.Add(lbRutasOptimasTD);
             panel1.Controls.Add(TDBote5);
-            panel1.Controls.Add(label21);
+            panel1.Controls.Add(lbResultadoTD);
             panel1.Controls.Add(TDBote9);
             panel1.Controls.Add(TDBote8);
             panel1.Controls.Add(TDBote7);
@@ -697,16 +697,16 @@
             TDBote10.TabIndex = 41;
             TDBote10.TabStop = false;
             // 
-            // label20
+            // lbRutasOptimasTD
             // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.White;
-            label20.BorderStyle = BorderStyle.FixedSingle;
-            label20.Location = new Point(473, 6);
-            label20.Name = "label20";
-            label20.Size = new Size(93, 22);
-            label20.TabIndex = 14;
-            label20.Text = "Ruta óptima";
+            lbRutasOptimasTD.AutoSize = true;
+            lbRutasOptimasTD.BackColor = Color.White;
+            lbRutasOptimasTD.BorderStyle = BorderStyle.FixedSingle;
+            lbRutasOptimasTD.Location = new Point(473, 6);
+            lbRutasOptimasTD.Name = "lbRutasOptimasTD";
+            lbRutasOptimasTD.Size = new Size(93, 22);
+            lbRutasOptimasTD.TabIndex = 14;
+            lbRutasOptimasTD.Text = "Ruta óptima";
             // 
             // TDBote5
             // 
@@ -719,16 +719,16 @@
             TDBote5.TabIndex = 40;
             TDBote5.TabStop = false;
             // 
-            // label21
+            // lbResultadoTD
             // 
-            label21.AutoSize = true;
-            label21.BackColor = Color.White;
-            label21.BorderStyle = BorderStyle.FixedSingle;
-            label21.Location = new Point(250, 6);
-            label21.Name = "label21";
-            label21.Size = new Size(104, 22);
-            label21.TabIndex = 13;
-            label21.Text = "Costo mínimo";
+            lbResultadoTD.AutoSize = true;
+            lbResultadoTD.BackColor = Color.White;
+            lbResultadoTD.BorderStyle = BorderStyle.FixedSingle;
+            lbResultadoTD.Location = new Point(250, 6);
+            lbResultadoTD.Name = "lbResultadoTD";
+            lbResultadoTD.Size = new Size(104, 22);
+            lbResultadoTD.TabIndex = 13;
+            lbResultadoTD.Text = "Costo mínimo";
             // 
             // TDBote9
             // 
@@ -1102,8 +1102,8 @@
         #endregion
         private TextBox txtOrigen;
         private TextBox txtDestino;
-        private Label lbResultado;
-        private Label lbRutasOptimas;
+        private Label lbResultadoBU;
+        private Label lbRutasOptimasBU;
         private Label label1;
         private Label label2;
         private DataGridView dGVTarifas;
@@ -1172,7 +1172,7 @@
         private PictureBox pictureBox18;
         private PictureBox pictureBox19;
         private PictureBox pictureBox20;
-        private Label label20;
-        private Label label21;
+        private Label lbRutasOptimasTD;
+        private Label lbResultadoTD;
     }
 }

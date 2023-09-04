@@ -56,7 +56,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             MostrarTarifasDGV();
             // Configurar el Timer
             timer = new Timer();
-            timer.Interval = 1000 / (FRAMES_PER_SECOND / 3); // Actualizar cada 3 cuadros
+            timer.Interval = 1000 / (FRAMES_PER_SECOND / 10); // Actualizar cada 3 cuadros
             timer.Tick += Timer_Tick;
         }
 
@@ -98,7 +98,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                     // Buscar el bote correspondiente al embarcadero actual y ajustar la posición de su PictureBox
                     Bote boteActualBU = botesBU.FirstOrDefault(bote => bote.NumeroEmbarcadero == currentEmbarcadero + 1);
                     Bote boteActualTD = botesTD.FirstOrDefault(bote => bote.NumeroEmbarcadero == currentEmbarcadero + 1);
-                    if (boteActualBU != null&& boteActualTD != null)
+                    if (boteActualBU != null && boteActualTD != null)
                     {
                         // Baja 50 pixeles suavemente utilizando interpolación cúbica
                         if (rutaOptima.Count == 2)
@@ -182,8 +182,8 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             rutaOptima = viaje.RecuperarRutaOptima(origen, destino);
 
             // Mostrar el resultado en el label
-            lbResultado.Text = "Costo mínimo: " + costoMinimo.ToString();
-            lbRutasOptimas.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
+            lbResultadoBU.Text = "Costo mínimo: " + costoMinimo.ToString();
+            lbRutasOptimasBU.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
 
             //inicia y reinicia la simulación
             totalFrames = rutaOptima.Count * FRAMES_PER_SECOND;
