@@ -13,8 +13,8 @@
         public int[,] tarifas; // Matriz triangular superior de tarifas
         public int n; // Número de embarcaderos
         public int[,] dp; // Matriz de programación dinámica para almacenar los resultados calculados
-        public int[,] rutas; // Matriz para almacenar las rutas óptimas
-
+        public int[,] rutasTD; // Matriz para almacenar las rutas óptimas TopDown
+        public int[,] rutasBU; // Matriz para almacenar las rutas óptimas ButtonUp
         public ViajePorRio()
         {
             n = 10; // Número de embarcaderos
@@ -33,7 +33,8 @@
             };
 
             dp = new int[n, n];
-            rutas = new int[n, n];
+            rutasTD = new int[n, n];
+            rutasBU = new int[n, n];
 
         }
 
@@ -66,19 +67,19 @@
 
             // Almacenamos el resultado en la matriz dp para evitar recálculos futuros
             dp[origen, destino] = costoMinimo;
-            rutas[origen, destino] = siguienteEmbarcadero;
+            rutasTD[origen, destino] = siguienteEmbarcadero;
 
             return costoMinimo;
         }
 
-        public List<int> RecuperarRutaOptima(int origen, int destino)
+        public List<int> RecuperarRutaOptimaTopDown(int origen, int destino)
         {
             List<int> ruta = new List<int>();
 
             while (origen != destino)
             {
                 ruta.Add(origen); // Agregar el embarcadero actual a la ruta
-                origen = rutas[origen, destino]; // Cambiar al siguiente embarcadero en la ruta
+                origen = rutasTD[origen, destino]; // Cambiar al siguiente embarcadero en la ruta
             }
             ruta.Add(destino); // Agregar el destino final a la ruta
 
@@ -91,7 +92,7 @@
         }
 
 
-        public int CalcularCostoMinimoButtomUp(int origen, int destino)
+        public int CalcularCostoMinimoBottomUp(int origen, int destino)
         {
             // Crear un arreglo para mantener el costo mínimo para llegar a cada embarcadero.
             int[] costosMinimos = new int[n];
@@ -122,6 +123,22 @@
             // Reconstruir la ruta óptima y devolver el costo mínimo
             return costosMinimos[destino];
         }
+        public List<int> RecuperarRutaOptimaBottomUp(int origen, int destino)
+        {
+            List<int> rutaOptima = new List<int>();
+
+            while (destino != origen)
+            {
+                int siguienteEmbarcadero = rutasBU[origen, destino];
+                rutaOptima.Add(siguienteEmbarcadero);
+                origen = siguienteEmbarcadero;
+            }
+
+            rutaOptima.Reverse(); // Invertir la lista para que comience desde el origen
+
+            return rutaOptima;
+        }
+
     }
 
 }

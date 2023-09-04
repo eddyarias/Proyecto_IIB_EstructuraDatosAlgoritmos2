@@ -10,7 +10,8 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
         ViajePorRio viaje;
         private Timer timer;
         private int[] embarcaderos; // Posiciones de los embarcaderos
-        List<int> rutaOptima;
+        List<int> rutaOptimaTD;
+        List<int> rutaOptimaBU;
         List<Bote> botesBU;
         List<Bote> botesTD;
         //para navegar
@@ -87,12 +88,12 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                 int currentIndex = currentFrame / FRAMES_PER_SECOND;
                 int nextIndex = currentIndex + 1;
 
-                if (nextIndex < rutaOptima.Count)
+                if (nextIndex < rutaOptimaTD.Count)
                 {
                     double progress = (double)(currentFrame % FRAMES_PER_SECOND) / FRAMES_PER_SECOND;
 
-                    int currentEmbarcadero = rutaOptima[currentIndex] - 1;
-                    int nextEmbarcadero = rutaOptima[nextIndex] - 1;
+                    int currentEmbarcadero = rutaOptimaTD[currentIndex] - 1;
+                    int nextEmbarcadero = rutaOptimaTD[nextIndex] - 1;
 
                     int interpolatedPositionLeft = (int)(embarcaderos[currentEmbarcadero] +
                                                          progress * (embarcaderos[nextEmbarcadero] - embarcaderos[currentEmbarcadero]));
@@ -103,7 +104,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                     if (boteActualBU != null && boteActualTD != null)
                     {
                         // Baja 50 pixeles suavemente utilizando interpolación cúbica
-                        if (rutaOptima.Count == 2)
+                        if (rutaOptimaTD.Count == 2)
                         {
                             if (currentFrame == 0)
                             {
@@ -178,17 +179,22 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             }
 
             //Calcula el costo mínimo y la ruta óptima
-            int costoMinimo = viaje.CalcularCostoMinimoTopDown(origen, destino);
+            int costoMinimoTD = viaje.CalcularCostoMinimoTopDown(origen, destino);
+            int costoMinimoBU = viaje.CalcularCostoMinimoBottomUp(origen, destino);
 
             // Recuperar la ruta óptima a partir de la matriz de rutas
-            rutaOptima = viaje.RecuperarRutaOptima(origen, destino);
+            rutaOptimaTD = viaje.RecuperarRutaOptimaTopDown(origen, destino);
 
-            // Mostrar el resultado en el label
-            lbResultado.Text = "Costo mínimo: " + costoMinimo.ToString();
-            lbRutasOptimas.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptima);
+            // Mostrar el resultado en el label TopDown
+            lbResultadoTD.Text = "Costo mínimo: " + costoMinimoTD.ToString();
+            lbRutasOptimasTD.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptimaTD);
+
+            // Mostrar el resultado en el label BottomUp
+            lbResultadoBU.Text = "Costo mínimo: " + costoMinimoBU.ToString();
+            lbRutasOptimasBU.Text = "Ruta óptima: " + string.Join(" -> ", rutaOptimaTD);
 
             //inicia y reinicia la simulación
-            totalFrames = rutaOptima.Count * FRAMES_PER_SECOND;
+            totalFrames = rutaOptimaTD.Count * FRAMES_PER_SECOND;
             currentFrame = 0;
             timer.Start();// Iniciar el timer
         }
