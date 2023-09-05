@@ -39,7 +39,7 @@
             label2 = new Label();
             dGVTarifas = new DataGridView();
             Iniciar = new Button();
-            PanelRio = new Panel();
+            PRioBU = new Panel();
             BUBote10 = new PictureBox();
             BUBote5 = new PictureBox();
             BUBote9 = new PictureBox();
@@ -72,7 +72,7 @@
             PBE3 = new PictureBox();
             PBE1 = new PictureBox();
             label9 = new Label();
-            panel1 = new Panel();
+            PRioTD = new Panel();
             TDBote10 = new PictureBox();
             lbRutasOptimasTD = new Label();
             TDBote5 = new PictureBox();
@@ -106,7 +106,7 @@
             pictureBox19 = new PictureBox();
             pictureBox20 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dGVTarifas).BeginInit();
-            PanelRio.SuspendLayout();
+            PRioBU.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BUBote10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BUBote5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BUBote9).BeginInit();
@@ -127,7 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)PBE2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBE3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBE1).BeginInit();
-            panel1.SuspendLayout();
+            PRioTD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TDBote10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TDBote5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TDBote9).BeginInit();
@@ -208,6 +208,7 @@
             // 
             // dGVTarifas
             // 
+            dGVTarifas.AllowUserToAddRows = false;
             dGVTarifas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dGVTarifas.BackgroundColor = Color.White;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -252,48 +253,48 @@
             Iniciar.UseVisualStyleBackColor = true;
             Iniciar.Click += IniciarSimulacion_Click;
             // 
-            // PanelRio
+            // PRioBU
             // 
-            PanelRio.BackColor = Color.Transparent;
-            PanelRio.BackgroundImage = (Image)resources.GetObject("PanelRio.BackgroundImage");
-            PanelRio.BackgroundImageLayout = ImageLayout.Stretch;
-            PanelRio.Controls.Add(BUBote10);
-            PanelRio.Controls.Add(BUBote5);
-            PanelRio.Controls.Add(BUBote9);
-            PanelRio.Controls.Add(BUBote8);
-            PanelRio.Controls.Add(label3);
-            PanelRio.Controls.Add(BUBote7);
-            PanelRio.Controls.Add(BUBote6);
-            PanelRio.Controls.Add(label4);
-            PanelRio.Controls.Add(label5);
-            PanelRio.Controls.Add(label6);
-            PanelRio.Controls.Add(lbRutasOptimasBU);
-            PanelRio.Controls.Add(label7);
-            PanelRio.Controls.Add(lbResultadoBU);
-            PanelRio.Controls.Add(label8);
-            PanelRio.Controls.Add(PBE10);
-            PanelRio.Controls.Add(PBE9);
-            PanelRio.Controls.Add(PBE7);
-            PanelRio.Controls.Add(PBE8);
-            PanelRio.Controls.Add(PBE6);
-            PanelRio.Controls.Add(BUBote4);
-            PanelRio.Controls.Add(BUBote3);
-            PanelRio.Controls.Add(BUBote2);
-            PanelRio.Controls.Add(BUBote1);
-            PanelRio.Controls.Add(lbE2);
-            PanelRio.Controls.Add(lbE3);
-            PanelRio.Controls.Add(lbE4);
-            PanelRio.Controls.Add(lbE5);
-            PanelRio.Controls.Add(lbE1);
-            PanelRio.Controls.Add(PBE5);
-            PanelRio.Controls.Add(PBE4);
-            PanelRio.Controls.Add(PBE2);
-            PanelRio.Controls.Add(PBE3);
-            PanelRio.Controls.Add(PBE1);
-            PanelRio.Location = new Point(295, 18);
-            PanelRio.Name = "PanelRio";
-            PanelRio.Size = new Size(1502, 330);
-            PanelRio.TabIndex = 11;
+            PRioBU.BackColor = Color.Transparent;
+            PRioBU.BackgroundImage = (Image)resources.GetObject("PRioBU.BackgroundImage");
+            PRioBU.BackgroundImageLayout = ImageLayout.Stretch;
+            PRioBU.Controls.Add(BUBote10);
+            PRioBU.Controls.Add(BUBote5);
+            PRioBU.Controls.Add(BUBote9);
+            PRioBU.Controls.Add(BUBote8);
+            PRioBU.Controls.Add(label3);
+            PRioBU.Controls.Add(BUBote7);
+            PRioBU.Controls.Add(BUBote6);
+            PRioBU.Controls.Add(label4);
+            PRioBU.Controls.Add(label5);
+            PRioBU.Controls.Add(label6);
+            PRioBU.Controls.Add(lbRutasOptimasBU);
+            PRioBU.Controls.Add(label7);
+            PRioBU.Controls.Add(lbResultadoBU);
+            PRioBU.Controls.Add(label8);
+            PRioBU.Controls.Add(PBE10);
+            PRioBU.Controls.Add(PBE9);
+            PRioBU.Controls.Add(PBE7);
+            PRioBU.Controls.Add(PBE8);
+            PRioBU.Controls.Add(PBE6);
+            PRioBU.Controls.Add(BUBote4);
+            PRioBU.Controls.Add(BUBote3);
+            PRioBU.Controls.Add(BUBote2);
+            PRioBU.Controls.Add(BUBote1);
+            PRioBU.Controls.Add(lbE2);
+            PRioBU.Controls.Add(lbE3);
+            PRioBU.Controls.Add(lbE4);
+            PRioBU.Controls.Add(lbE5);
+            PRioBU.Controls.Add(lbE1);
+            PRioBU.Controls.Add(PBE5);
+            PRioBU.Controls.Add(PBE4);
+            PRioBU.Controls.Add(PBE2);
+            PRioBU.Controls.Add(PBE3);
+            PRioBU.Controls.Add(PBE1);
+            PRioBU.Location = new Point(298, 365);
+            PRioBU.Name = "PRioBU";
+            PRioBU.Size = new Size(1502, 330);
+            PRioBU.TabIndex = 11;
             // 
             // BUBote10
             // 
@@ -643,48 +644,48 @@
             label9.TabIndex = 16;
             label9.Text = "TOP-DOWN";
             // 
-            // panel1
+            // PRioTD
             // 
-            panel1.BackColor = Color.Transparent;
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
-            panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(TDBote10);
-            panel1.Controls.Add(lbRutasOptimasTD);
-            panel1.Controls.Add(TDBote5);
-            panel1.Controls.Add(lbResultadoTD);
-            panel1.Controls.Add(TDBote9);
-            panel1.Controls.Add(TDBote8);
-            panel1.Controls.Add(TDBote7);
-            panel1.Controls.Add(TDBote6);
-            panel1.Controls.Add(label10);
-            panel1.Controls.Add(label11);
-            panel1.Controls.Add(label12);
-            panel1.Controls.Add(label13);
-            panel1.Controls.Add(label14);
-            panel1.Controls.Add(pictureBox7);
-            panel1.Controls.Add(pictureBox8);
-            panel1.Controls.Add(pictureBox9);
-            panel1.Controls.Add(pictureBox10);
-            panel1.Controls.Add(pictureBox11);
-            panel1.Controls.Add(TDBote4);
-            panel1.Controls.Add(TDBote3);
-            panel1.Controls.Add(TDBote2);
-            panel1.Controls.Add(TDBote1);
-            panel1.Controls.Add(label15);
-            panel1.Controls.Add(label16);
-            panel1.Controls.Add(label17);
-            panel1.Controls.Add(label18);
-            panel1.Controls.Add(label19);
-            panel1.Controls.Add(pictureBox16);
-            panel1.Controls.Add(pictureBox17);
-            panel1.Controls.Add(pictureBox18);
-            panel1.Controls.Add(pictureBox19);
-            panel1.Controls.Add(pictureBox20);
-            panel1.Location = new Point(297, 365);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1502, 330);
-            panel1.TabIndex = 15;
+            PRioTD.BackColor = Color.Transparent;
+            PRioTD.BackgroundImage = (Image)resources.GetObject("PRioTD.BackgroundImage");
+            PRioTD.BackgroundImageLayout = ImageLayout.Stretch;
+            PRioTD.Controls.Add(label9);
+            PRioTD.Controls.Add(TDBote10);
+            PRioTD.Controls.Add(lbRutasOptimasTD);
+            PRioTD.Controls.Add(TDBote5);
+            PRioTD.Controls.Add(lbResultadoTD);
+            PRioTD.Controls.Add(TDBote9);
+            PRioTD.Controls.Add(TDBote8);
+            PRioTD.Controls.Add(TDBote7);
+            PRioTD.Controls.Add(TDBote6);
+            PRioTD.Controls.Add(label10);
+            PRioTD.Controls.Add(label11);
+            PRioTD.Controls.Add(label12);
+            PRioTD.Controls.Add(label13);
+            PRioTD.Controls.Add(label14);
+            PRioTD.Controls.Add(pictureBox7);
+            PRioTD.Controls.Add(pictureBox8);
+            PRioTD.Controls.Add(pictureBox9);
+            PRioTD.Controls.Add(pictureBox10);
+            PRioTD.Controls.Add(pictureBox11);
+            PRioTD.Controls.Add(TDBote4);
+            PRioTD.Controls.Add(TDBote3);
+            PRioTD.Controls.Add(TDBote2);
+            PRioTD.Controls.Add(TDBote1);
+            PRioTD.Controls.Add(label15);
+            PRioTD.Controls.Add(label16);
+            PRioTD.Controls.Add(label17);
+            PRioTD.Controls.Add(label18);
+            PRioTD.Controls.Add(label19);
+            PRioTD.Controls.Add(pictureBox16);
+            PRioTD.Controls.Add(pictureBox17);
+            PRioTD.Controls.Add(pictureBox18);
+            PRioTD.Controls.Add(pictureBox19);
+            PRioTD.Controls.Add(pictureBox20);
+            PRioTD.Location = new Point(298, 12);
+            PRioTD.Name = "PRioTD";
+            PRioTD.Size = new Size(1502, 330);
+            PRioTD.TabIndex = 15;
             // 
             // TDBote10
             // 
@@ -1040,8 +1041,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1812, 708);
-            Controls.Add(panel1);
-            Controls.Add(PanelRio);
+            Controls.Add(PRioTD);
+            Controls.Add(PRioBU);
             Controls.Add(Iniciar);
             Controls.Add(dGVTarifas);
             Controls.Add(label2);
@@ -1050,10 +1051,9 @@
             Controls.Add(txtOrigen);
             Name = "FormViajePorRio";
             Text = "VIAJE MÁS BARATO POR RÍO - GRUPO 6";
-            Load += FormViajePorRio_Load;
             ((System.ComponentModel.ISupportInitialize)dGVTarifas).EndInit();
-            PanelRio.ResumeLayout(false);
-            PanelRio.PerformLayout();
+            PRioBU.ResumeLayout(false);
+            PRioBU.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)BUBote10).EndInit();
             ((System.ComponentModel.ISupportInitialize)BUBote5).EndInit();
             ((System.ComponentModel.ISupportInitialize)BUBote9).EndInit();
@@ -1074,8 +1074,8 @@
             ((System.ComponentModel.ISupportInitialize)PBE2).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBE3).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBE1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            PRioTD.ResumeLayout(false);
+            PRioTD.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TDBote10).EndInit();
             ((System.ComponentModel.ISupportInitialize)TDBote5).EndInit();
             ((System.ComponentModel.ISupportInitialize)TDBote9).EndInit();
@@ -1109,7 +1109,7 @@
         private Label label2;
         private DataGridView dGVTarifas;
         private Button Iniciar;
-        private Panel PanelRio;
+        private Panel PRioBU;
         private PictureBox PBE1;
         private PictureBox PBE5;
         private PictureBox PBE4;
@@ -1142,7 +1142,7 @@
         private PictureBox BUBote10;
         private PictureBox BUBote5;
         private Label label9;
-        private Panel panel1;
+        private Panel PRioTD;
         private PictureBox TDBote10;
         private PictureBox TDBote5;
         private PictureBox TDBote9;
