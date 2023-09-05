@@ -40,6 +40,7 @@
             dGVTarifas = new DataGridView();
             Iniciar = new Button();
             PRioBU = new Panel();
+            label21 = new Label();
             BUBote10 = new PictureBox();
             BUBote5 = new PictureBox();
             BUBote9 = new PictureBox();
@@ -73,6 +74,7 @@
             PBE1 = new PictureBox();
             label9 = new Label();
             PRioTD = new Panel();
+            label20 = new Label();
             TDBote10 = new PictureBox();
             lbRutasOptimasTD = new Label();
             TDBote5 = new PictureBox();
@@ -105,6 +107,8 @@
             pictureBox18 = new PictureBox();
             pictureBox19 = new PictureBox();
             pictureBox20 = new PictureBox();
+            lbTiempoEjecucionTD = new Label();
+            lbTiempoEjecucionBU = new Label();
             ((System.ComponentModel.ISupportInitialize)dGVTarifas).BeginInit();
             PRioBU.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BUBote10).BeginInit();
@@ -258,6 +262,8 @@
             PRioBU.BackColor = Color.Transparent;
             PRioBU.BackgroundImage = (Image)resources.GetObject("PRioBU.BackgroundImage");
             PRioBU.BackgroundImageLayout = ImageLayout.Stretch;
+            PRioBU.Controls.Add(lbTiempoEjecucionBU);
+            PRioBU.Controls.Add(label21);
             PRioBU.Controls.Add(BUBote10);
             PRioBU.Controls.Add(BUBote5);
             PRioBU.Controls.Add(BUBote9);
@@ -295,6 +301,16 @@
             PRioBU.Name = "PRioBU";
             PRioBU.Size = new Size(1502, 330);
             PRioBU.TabIndex = 11;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Rockwell", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label21.Location = new Point(699, 289);
+            label21.Name = "label21";
+            label21.Size = new Size(121, 26);
+            label21.TabIndex = 43;
+            label21.Text = "RÍO NAPO";
             // 
             // BUBote10
             // 
@@ -649,6 +665,8 @@
             PRioTD.BackColor = Color.Transparent;
             PRioTD.BackgroundImage = (Image)resources.GetObject("PRioTD.BackgroundImage");
             PRioTD.BackgroundImageLayout = ImageLayout.Stretch;
+            PRioTD.Controls.Add(lbTiempoEjecucionTD);
+            PRioTD.Controls.Add(label20);
             PRioTD.Controls.Add(label9);
             PRioTD.Controls.Add(TDBote10);
             PRioTD.Controls.Add(lbRutasOptimasTD);
@@ -686,6 +704,16 @@
             PRioTD.Name = "PRioTD";
             PRioTD.Size = new Size(1502, 330);
             PRioTD.TabIndex = 15;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Rockwell", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(699, 285);
+            label20.Name = "label20";
+            label20.Size = new Size(121, 26);
+            label20.TabIndex = 42;
+            label20.Text = "RÍO NAPO";
             // 
             // TDBote10
             // 
@@ -1035,6 +1063,28 @@
             pictureBox20.TabIndex = 11;
             pictureBox20.TabStop = false;
             // 
+            // lbTiempoEjecucionTD
+            // 
+            lbTiempoEjecucionTD.AutoSize = true;
+            lbTiempoEjecucionTD.BackColor = Color.White;
+            lbTiempoEjecucionTD.BorderStyle = BorderStyle.FixedSingle;
+            lbTiempoEjecucionTD.Location = new Point(699, 7);
+            lbTiempoEjecucionTD.Name = "lbTiempoEjecucionTD";
+            lbTiempoEjecucionTD.Size = new Size(150, 22);
+            lbTiempoEjecucionTD.TabIndex = 43;
+            lbTiempoEjecucionTD.Text = "Tiempo de ejecución";
+            // 
+            // lbTiempoEjecucionBU
+            // 
+            lbTiempoEjecucionBU.AutoSize = true;
+            lbTiempoEjecucionBU.BackColor = Color.White;
+            lbTiempoEjecucionBU.BorderStyle = BorderStyle.FixedSingle;
+            lbTiempoEjecucionBU.Location = new Point(699, 6);
+            lbTiempoEjecucionBU.Name = "lbTiempoEjecucionBU";
+            lbTiempoEjecucionBU.Size = new Size(150, 22);
+            lbTiempoEjecucionBU.TabIndex = 44;
+            lbTiempoEjecucionBU.Text = "Tiempo de ejecución";
+            // 
             // FormViajePorRio
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1175,5 +1225,9 @@
         private PictureBox pictureBox20;
         private Label lbRutasOptimasTD;
         private Label lbResultadoTD;
+        private Label label20;
+        private Label label21;
+        private Label lbTiempoEjecucionTD;
+        private Label lbTiempoEjecucionBU;
     }
 }

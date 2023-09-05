@@ -1,4 +1,4 @@
-namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
+锘縩amespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 {
     using System;
     using System.Diagnostics;
@@ -7,6 +7,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 
     public partial class FormViajePorRio : Form
     {
+
         ViajePorRio viaje;
         private Timer timerTD;
         private Timer timerBU;
@@ -31,7 +32,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             viaje = new ViajePorRio();
             botesBU = new List<Bote>();
             botesTD = new List<Bote>();
-            embarcaderos = new int[] { 50, 200, 350, 500, 650, 800, 950, 1100, 1250, 1400 }; // Ubicaciones en p韝eles
+            embarcaderos = new int[] { 50, 200, 350, 500, 650, 800, 950, 1100, 1250, 1400 }; // Ubicaciones en p铆xeles
 
             // Agregar los botes a la lista Top-Down
             botesTD.Add(new Bote(1, 40, 173, TDBote1));
@@ -102,13 +103,13 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                     int interpolatedPositionLeftTD = (int)(embarcaderos[currentEmbarcaderoTD] +
                                                             progress * (embarcaderos[nextEmbarcaderoTD] - embarcaderos[currentEmbarcaderoTD]));
 
-                    // Buscar el bote correspondiente al embarcadero actual y ajustar la posici髇 de su PictureBox
+                    // Buscar el bote correspondiente al embarcadero actual y ajustar la posici贸n de su PictureBox
                     Bote boteActualTD = botesTD.FirstOrDefault(bote => bote.NumeroEmbarcadero == currentEmbarcaderoTD + 1);
                     boteActualTD.PBBote.BringToFront();
 
                     if (boteActualTD != null)
                     {
-                        // Baja 50 pixeles suavemente utilizando interpolaci髇 c鷅ica
+                        // Baja 50 pixeles suavemente utilizando interpolaci贸n c煤bica
                         if (rutaOptimaTD.Count == 2)
                         {
                             if (currentFrameTD == 0)
@@ -118,10 +119,10 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                         }
                         else
                         {
-                            double verticalProgress = progress * progress * (3 - 2 * progress); // Interpolaci髇 c鷅ica
+                            double verticalProgress = progress * progress * (3 - 2 * progress); // Interpolaci贸n c煤bica
 
                             int originalTop = boteActualTD.PosicionOriginalTop;
-                            int targetTop = originalTop + 60; // Posici髇 final despu閟 del descenso
+                            int targetTop = originalTop + 60; // Posici贸n final despu茅s del descenso
 
                             int verticalPosition = (int)(originalTop +
                                                          verticalProgress * (targetTop - originalTop));
@@ -162,12 +163,12 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                     int interpolatedPositionLeftBU = (int)(embarcaderos[currentEmbarcaderoBU] +
                                                             progress * (embarcaderos[nextEmbarcaderoBU] - embarcaderos[currentEmbarcaderoBU]));
 
-                    // Buscar el bote correspondiente al embarcadero actual y ajustar la posici髇 de su PictureBox
+                    // Buscar el bote correspondiente al embarcadero actual y ajustar la posici贸n de su PictureBox
                     Bote boteActualBU = botesBU.FirstOrDefault(bote => bote.NumeroEmbarcadero == currentEmbarcaderoBU + 1);
                     boteActualBU.PBBote.BringToFront();
                     if (boteActualBU != null)
                     {
-                        // Baja 60 pixeles suavemente utilizando interpolaci髇 c鷅ica
+                        // Baja 60 pixeles suavemente utilizando interpolaci贸n c煤bica
                         if (rutaOptimaBU.Count == 2)
                         {
                             if (currentFrameBU == 0)
@@ -177,10 +178,10 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
                         }
                         else
                         {
-                            double verticalProgress = progress * progress * (3 - 2 * progress); // Interpolaci髇 c鷅ica
+                            double verticalProgress = progress * progress * (3 - 2 * progress); // Interpolaci贸n c煤bica
 
                             int originalTop = boteActualBU.PosicionOriginalTop;
-                            int targetTop = originalTop + 60; // Posici髇 final despu閟 del descenso
+                            int targetTop = originalTop + 60; // Posici贸n final despu茅s del descenso
 
                             int verticalPosition = (int)(originalTop +
                                                          verticalProgress * (targetTop - originalTop));
@@ -224,11 +225,11 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
             if (!int.TryParse(txtOrigen.Text, out int origen) ||
                 !int.TryParse(txtDestino.Text, out int destino))
             {
-                MessageBox.Show("Ingrese el n鷐ero del embarcadero de origen y destino.");
+                MessageBox.Show("Ingrese el n煤mero del embarcadero de origen y destino.");
                 return;
             }
 
-            origen--; // Convertir a 韓dice
+            origen--; // Convertir a 铆ndice
             destino--;
 
             if (origen < 0 || destino < 0 || origen >= viaje.n || destino >= viaje.n)
@@ -239,41 +240,52 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
 
             if (origen >= destino)
             {
-                MessageBox.Show("Solo puede ir r韔 abajo.");
+                MessageBox.Show("Solo puede ir r铆o abajo.");
                 return;
             }
 
-            //Calcula el costo m韓imo y la ruta 髉tima
+            // Medir el tiempo de ejecuci贸n para el enfoque Top-Down
+            var stopwatchTD = new Stopwatch();
+            stopwatchTD.Start();
             int costoMinimoTD = viaje.CalcularCostoMinimoTopDown(origen, destino);
-            int costoMinimoBU = viaje.CalcularCostoMinimoBottomUp(origen, destino);
+            stopwatchTD.Stop();
 
-            // Recuperar la ruta 髉tima a partir de la matriz de rutas
+            // Medir el tiempo de ejecuci贸n para el enfoque Bottom-Up
+            var stopwatchBU = new Stopwatch();
+            stopwatchBU.Start();
+            int costoMinimoBU = viaje.CalcularCostoMinimoBottomUp(origen, destino);
+            stopwatchBU.Stop();
+
+            // Recuperar la ruta 贸ptima a partir de la matriz de rutas
             rutaOptimaTD = viaje.RecuperarRutaOptimaTopDown(origen, destino);
             rutaOptimaBU = viaje.RecuperarRutaOptimaBottomUp(origen, destino);
 
             // Mostrar el resultado en el label TopDown
-            lbResultadoTD.Text = "Costo m韓imo: " + costoMinimoTD.ToString();
-            lbRutasOptimasTD.Text = "Ruta 髉tima: " + string.Join(" -> ", rutaOptimaTD);
+            lbResultadoTD.Text = "Costo m铆nimo: " + costoMinimoTD.ToString();
+            lbTiempoEjecucionTD.Text = "Tiempo de ejecuci贸n (ns): " + ((stopwatchTD.ElapsedTicks * 1000000000) / Stopwatch.Frequency).ToString();
+            lbRutasOptimasTD.Text = "Ruta 贸ptima: " + string.Join(" -> ", rutaOptimaTD);
 
             // Mostrar el resultado en el label BottomUp
-            lbResultadoBU.Text = "Costo m韓imo: " + costoMinimoBU.ToString();
-            lbRutasOptimasBU.Text = "Ruta 髉tima: " + string.Join(" -> ", rutaOptimaBU);
+            lbResultadoBU.Text = "Costo m铆nimo: " + costoMinimoBU.ToString();
+            lbTiempoEjecucionBU.Text = "Tiempo de ejecuci贸n (ns): " + ((stopwatchBU.ElapsedTicks * 1000000000) / Stopwatch.Frequency).ToString();
+            lbRutasOptimasBU.Text = "Ruta 贸ptima: " + string.Join(" -> ", rutaOptimaBU);
 
-            //inicia y reinicia la simulaci髇 para Top-Down
+            //inicia y reinicia la simulaci贸n para Top-Down
             totalFramesTD = rutaOptimaTD.Count * FRAMES_PER_SECOND;
             timerTD.Start();
 
-            //inicia y reinicia la simulaci髇 para Bottom-Up
+            //inicia y reinicia la simulaci贸n para Bottom-Up
             totalFramesBU = rutaOptimaBU.Count * FRAMES_PER_SECOND;
             timerBU.Start();
         }
 
-        //Para restaurar la posici髇 de los barcos.
+
+        //Para restaurar la posici贸n de los barcos.
         private void txtOrigen_TextChanged(object sender, EventArgs e)
         {
             timerTD.Stop();
             timerBU.Stop();
-            // Restaurar la posici髇 de todos los barcos
+            // Restaurar la posici贸n de todos los barcos
             foreach (Bote bote in botesBU)
             {
                 bote.RestaurarPosicion();
@@ -287,7 +299,7 @@ namespace Proyecto_IIB_EstructuraDatosAlgoritmos2
         {
             timerTD.Stop();
             timerBU.Stop();
-            // Restaurar la posici髇 de todos los barcos
+            // Restaurar la posici贸n de todos los barcos
             foreach (Bote bote in botesBU)
             {
                 bote.RestaurarPosicion();
